@@ -7,25 +7,54 @@ print("Task 1 ...")
 // В массиве переменных n хранятся вещественные числа с ненулевой дробной частью.
 // Реализуйте программу, округляющую числа до ближайшего целого и выводящую результат в консоль
 
-var n: [Double] = [1.3, 5.3, 9.4, 12.7]
+let n: [Double] = [1.3, 5.3, 9.4, 12.7]
 for n1 in n {
     print(round(n1))
-    }
+}
 
 // MARK: - Task 2
 print("Task 2 ...")
 // В массиве переменных n хранятся трёхзначные числа.
 // Реализуйте программу, вычисляющую и выводящую на экран сумму цифр числа n, сумму всех чисел, среднее арифмитическое, наибольшее и наименьшее из массива число.
 
-var n2: [Int] = [100, 200, 300]
+let n2: [Int] = [123, 244, 300, 213]
+let n3: [Int] = [1231, 2434, 302, 2113]
+let n4: [Int] = [123, 244, 3400]
+
 var sum2 = 0
 n2.forEach { sum2 += $0 }
 print(sum2)
 print(sum2 / n2.count)
 print("min: \(n2.min()), max: \(n2.max())")
 
+func getArrayElementSum(array: [Int]) -> [Int] {
+    var arraySums: [Int] = []
+    
+    for number in array {
+        let strNumber: String = String(number)
+        var arraySum: Int = 0
+        for char in strNumber {
+            let str = String(char)
+            let number: Int? = Int(str)
+            arraySum += number ?? 0
+        }
+        arraySums.append(arraySum)
+    }
+    return arraySums
+}
+
+var n2Array: [Int] = []
+let n3Array: [Int] = getArrayElementSum(array: n3)
+var n4Array: [Int] = []
+
+n2Array += getArrayElementSum(array: n2)
+
+getArrayElementSum(array: n4)
+
+n4Array = getArrayElementSum(array: n4)
+
 // MARK: - Task 3
-print("Task 3 ...")
+print;("Task 3 ...")
 // Cоздайте массив чисел, заполните их значениями от 1 до 100, перемешайте в случайном порядке.
 // С помощью итерации проверьте входит ли каждое число в интервалы (15;25), (33;42) и (85;99).
 // Выведите результат и числа в консоль
@@ -36,10 +65,7 @@ let range1 = 15...25
 let range2 = 33...42
 let range3 = 85...99
 
-range1.contains(77)
-
 for number in numbers {
-    
     switch number {
     case range1:
         print("Number \(number) in the range \(range1)")
@@ -63,6 +89,33 @@ print("Task 5 ...")
 // Затем замените каждый элемент с четным индексом на ноль, а с нечётным на 1.
 // И снова выведите массив в консоль
 
+func makeList(_ n: Int) -> [Int] {
+    var array: [Int] = []
+    for _ in (1...n) {
+        let randomInt = Int.random(in: 1..<10)
+        array.append(randomInt)
+    }
+    
+    return array
+}
+
+var list = makeList(20)
+
+for (index, number) in list.enumerated() {
+    print("index: \(index) value: \(number)")
+}
+
+for (index, _) in list.enumerated() {
+    if index % 2 == 0 {
+        list[index] = 0
+    } else {
+        list[index] = 1
+    }
+}
+for (index, number) in list.enumerated() {
+    print("index: \(index) value: \(number)")
+}
+
 // MARK: - Task 6
 print("Task 6 ...")
 // Создайте два массива из 10 целых случайных чисел из отрезка [1;9] и третий массив из 10 действительных чисел.
@@ -70,7 +123,7 @@ print("Task 6 ...")
 // Вывести все три массива на экран (каждый на отдельной строке), затем вывести количество целых элементов в третьем массиве.
 
 // MARK: - Task 7
-print("Task 7 ...")
+print;("Task 7 ...")
 // Реализуйте программу, в которой создайте словарь и заполните его различными значениями
 // А затем выведите в консоль новый словарь, где все ключи и значения поменялись местами.
 
@@ -118,6 +171,21 @@ func printDaysAndMonths(months: [String], days: [Int]) {
 }
 printDaysAndMonths(months: monthsArray, days: daysArray)
 
+let index = Int.random(in: 0..<monthsArray.count)
+let months: String = monthsArray[index]
+let days: Int = daysArray[index]
+let randomDay = Int.random(in: 1...days)
+
+let newDaysArray: [Int] = Array(daysArray[0..<index])
+
+var daysCountSum: Int = 0
+for daysCount in newDaysArray {
+    daysCountSum += daysCount
+}
+let daysBeforeYearStar: Int = daysCountSum + randomDay
+
+daysBeforeYearStar
+
 var monthsDays: [(month: String, day: Int)] = []
 monthsDays += [(month: "January", day: 30)]
 monthsDays += [(month: "February", day: 31)]
@@ -134,6 +202,8 @@ monthsDays += [(month: "December", day: 31)]
 print(monthsDays)
 
 let currentDate: (String, Int) = ("April", 20)
+
+monthsDays
 
 // MARK: - Task 2
 print("Task 2 ...")
@@ -216,12 +286,11 @@ print("Task 5 ...")
 // Создайте новый кортеж, элементами которого будут любимое число из первого кортежа, любимое число из второго кортежа и разница любимых чисел первого и второго кортежей.
 // Решение оформите ниже
 
-let favorite = ("Tor", 13, "Meat")
-let (favoriteFilm, favoriteNumber, favoriteFood) = favorite
-print("Film \(favoriteFilm)")
-let favoriteFriend = ("Madmen", 10, "Potato")
-let (favoriteFilmFriend, favoriteNumberFriend, favoriteFoodFriend) = favoriteFriend
-let favoriteNumbers = (13, 10, favoriteNumber - favoriteNumberFriend)
+let favorite = (favoriteFilm: "Tor", favoriteNumber: 13, favoriteFood: "Meat")
+favorite.favoriteFilm
+print("Film \(favorite.favoriteFilm)")
+let favoriteFriend = (favoriteFilmFriend: "Madmen", favoriteNumberFriend: 10, favoriteFoodFriend: "Potato")
+let favoriteNumbers = (favorite.favoriteNumber - favoriteFriend.favoriteNumberFriend)
 
 // MARK: - Сложные задачи
 // MARK: - Task 1
@@ -234,8 +303,6 @@ print("Task 1 ...")
 // Если количество слушателей более 12ти человек - стоимость обучения равна 500 $ для каждого студента.
 // Реализуйте программу, которая подсчитает полную стоимость обучения всей группы с помощью конструкции if-else.
 // Программа должна получать на вход количество студентов, которые собираются обучаться.
-
-let gues = 10
 
 func getPrice(studentsCount: Int) -> Int {
     switch studentsCount {
@@ -260,14 +327,15 @@ print("Task 2 ...")
 // Для каждого студента добавьте Фамилию, возраст и флаг, который будет хранить информацию, есть ли у него/нее в наличии техника Apple.
 // Отсортируйте группу: а) по возрасту, б) по Фамилиям
 
-var students = [(name: "Ilya", age: 21, isHasMac: true),
-                (name: "Katya", age: 22, isHasMac: true),
-                (name: "Fedora", age: 23, isHasMac: false),
-                (name: "Susanna", age: 20, isHasMac: false),
-                (name: "Yan", age: 20, isHasMac: true),
-                (name: "Yan", age: 19, isHasMac: true),
-                (name: "Fedora", age: 13, isHasMac: false),
-                (name: "Ilya", age: 19, isHasMac: true)
+var students = [
+    (name: "Ilya", age: 21, isHasMac: true),
+    (name: "Katya", age: 22, isHasMac: true),
+    (name: "Fedora", age: 23, isHasMac: false),
+    (name: "Susanna", age: 20, isHasMac: false),
+    (name: "Yan", age: 20, isHasMac: true),
+    (name: "Yan", age: 19, isHasMac: true),
+    (name: "Fedora", age: 13, isHasMac: false),
+    (name: "Ilya", age: 19, isHasMac: true)
 ]
 
 students.sort { $0.age < $1.age }
@@ -288,17 +356,9 @@ print("Task 4 ...")
 // с учетом того, что обучаться могут только те студенты, у которых есть в наличии техника Apple.
 // Используете решения из предыдущих задач
 
-var studentCount: Int = 0
-
-for student in students {
-    if student.isHasMac {
-       studentCount += 1
-    }
-}
-
 let filteredStudents = students.filter { student in student.isHasMac }
 
-let price = getPrice(studentsCount: students.filter({ $0.isHasMac }).count)
+let price = getPrice(studentsCount: filteredStudents.count)
 
 price
 

@@ -21,6 +21,11 @@ let (a, b) = input
 var exit = 0
 exit += a % b
 
+//Solution
+let source = (source0: 65, source1: 30)
+let (x1, y1) = source
+var result1 = 0
+result1 += x1 % y1
 
 // MARK: - Task 2
 /*
@@ -34,6 +39,17 @@ exit += a % b
 let xValue = true
 let yValue = xValue ? 1 : 0
 
+//Solution
+let hasValue: Bool = !true
+let result2: Int
+if hasValue == true {
+    result2 = 30
+} else {
+    result2 = -93
+}
+result2
+
+let resultTernary = hasValue ? 30 : -93
 
 // MARK: - Task 3
 /*
@@ -45,6 +61,9 @@ let yValue = xValue ? 1 : 0
 let optinalString: String? = nil
 let stringValue: String = optinalString ?? "default"
 
+//Solution
+var sporceString: String? = nil
+let resultString: String = sporceString ?? "string"
 
 // MARK: - Task 4
 /*
@@ -52,6 +71,10 @@ let stringValue: String = optinalString ?? "default"
  - Сделать конструкцию for in {range} и распечатать значение используя команду print
  */
 
+let range4 = 34...51
+for number in range4 {
+    print(number)
+}
 
 // MARK: - Task 5
 /*
@@ -60,6 +83,12 @@ let stringValue: String = optinalString ?? "default"
  - Сделать конструкцию for in {range} и посчитать в переменную count значение всех значение range
  */
 
+var count5: Int = 0
+let range5 = 99...129
+for number in range5 {
+    count5 += number
+}
+count5
 
 // MARK: - Task 6
 /*
@@ -68,6 +97,12 @@ let stringValue: String = optinalString ?? "default"
  - Распечатать входит ли значение -1_000_000_000_000_000 в range
  */
 
+let oneSidedRange = ...20
+if oneSidedRange.contains(-1_000_000_000_000_000) {
+    print("Contain")
+} else {
+    print("Error")
+}
 
 // MARK: - Task 7
 /*
@@ -78,7 +113,18 @@ let stringValue: String = optinalString ?? "default"
  - С помощью команды print распечатать текст "NOT" при условии x != 10 или y != 10
  */
 
+let x7: Int = 1
+let y7: Int = 10
 
+if x7 == 1 && y7 < 0 {
+    print("AND")
+}
+if x7 >= 1 || y7 > -1 {
+    print("OR")
+}
+if x7 != 10 || y7 != 10 {
+    print("NOT")
+}
 
 // reference: https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html
 
@@ -89,12 +135,17 @@ let stringValue: String = optinalString ?? "default"
  - Multiline String Literals
  */
 
+let stringLiteralDollar: String = "\u{24}"
+let multilineString: String = """
+Hello
+"""
 
 // MARK: - Task 9
 /*
  - Проинициализировать строку используя произвольный unicode (Special Characters in String Literals)
  */
 
+let blackHeart = "\u{2665}"
 
 // MARK: - Task 10
 /*
@@ -103,6 +154,11 @@ let stringValue: String = optinalString ?? "default"
  - Проверить строку на пустоту, в случае не пустой строки вывести с помощью print количество символов в строке
  */
 
+var string10: String = ""
+string10 += "result"
+if string10.count > 0 {
+    print(string10.count)
+}
 
 // MARK: - Task 11
 /*
@@ -110,6 +166,10 @@ let stringValue: String = optinalString ?? "default"
  - Распечатать с помощью print каждый символ с использованием for in
  */
 
+let string11: String = "Swift iOS Dvelopment"
+for letter in string11 {
+    print(letter)
+}
 
 // MARK: - Task 12
 /*
@@ -117,6 +177,10 @@ let stringValue: String = optinalString ?? "default"
  - Используя String Interpolation обявить константу interpolationString с использованием констант из предыдущего шага
  */
 
+let intValue = 10
+let uintValue = 20
+
+let interpolationString = "\(intValue) \(uintValue)"
 
 // MARK: - Task 13
 /*
@@ -128,9 +192,24 @@ let stringValue: String = optinalString ?? "default"
  - Проверить с помощью функции hasSuffix начинается ли строка insertString с подстроки "swift"
  */
 
+var insertString = "Swift iOS Dvelopment"
+insertString += " !"
+insertString.insert("!", at: insertString.endIndex)
+let startIndex = insertString.startIndex
+let endIndex = insertString.endIndex
+
+var indexIOS = insertString.range(of: "iOS")
+indexIOS?.lowerBound
+indexIOS?.upperBound
 
 // MARK: - Task 14
 /*
  - Создать строку xString со значением "x" yString = "y"
  - Написать код печатающий с помощью print "yep!" при условии что строки xString и yString не равны
  */
+
+var xString = "x"
+var yString = "y"
+if xString != yString {
+    print("yep")
+}

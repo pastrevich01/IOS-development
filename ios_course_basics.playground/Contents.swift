@@ -1,4 +1,5 @@
 import UIKit
+import libkern
 
 // MARK: - Swift Basics, Basic Operators
 
@@ -40,7 +41,7 @@ let xValue = true
 let yValue = xValue ? 1 : 0
 
 //Solution
-let hasValue: Bool = !true
+let hasValue: Bool = false
 let result2: Int
 if hasValue == true {
     result2 = 30
@@ -97,7 +98,7 @@ count5
  - Распечатать входит ли значение -1_000_000_000_000_000 в range
  */
 
-let oneSidedRange = ...20
+let oneSidedRange: UInt = ...20
 if oneSidedRange.contains(-1_000_000_000_000_000) {
     print("Contain")
 } else {
@@ -177,8 +178,8 @@ for letter in string11 {
  - Используя String Interpolation обявить константу interpolationString с использованием констант из предыдущего шага
  */
 
-let intValue = 10
-let uintValue = 20
+let intValue: Int = 10
+let uintValue: UInt = 20
 
 let interpolationString = "\(intValue) \(uintValue)"
 
